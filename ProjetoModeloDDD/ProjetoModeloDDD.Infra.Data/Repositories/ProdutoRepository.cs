@@ -9,7 +9,7 @@ namespace ProjetoModeloDDD.Infra.Data.Repositories
     {
         public IEnumerable<Produto> BuscarPorNome(string nome)
         {
-           return Db.Produtos.Where(prop => p.Nome == nome);
+           return Db.Produtos.Where(p => p.Nome == nome);
         }
     }
 }
