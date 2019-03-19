@@ -2,10 +2,11 @@
 using System.Linq;
 using ProjetoModeloDDD.Domain.Entities;
 using ProjetoModeloDDD.Domain.Interfaces;
+using ProjetoModeloDDD.Domain.Interfaces.Repositories;
 
 namespace ProjetoModeloDDD.Infra.Data.Repositories
 {
-    class ProdutoRepository : RepositoryBase<Produto>, IprodutoRepository
+    public class ProdutoRepository : RepositoryBase<Produto>, IProdutoRepository
     {
         public IEnumerable<Produto> BuscarPorNome(string nome)
         {
