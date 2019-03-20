@@ -1,13 +1,12 @@
-﻿using ProjetoModeloDDD.Application;
+using ProjetoModeloDDD.Application;
 using ProjetoModeloDDD.Application.Interface;
 using ProjetoModeloDDD.Domain.Interfaces.Repositories;
 using ProjetoModeloDDD.Domain.Interfaces.Services;
 using ProjetoModeloDDD.Domain.Services;
 using ProjetoModeloDDD.Infra.Data.Repositories;
 
-
-//[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(ProjetoModeloDDD.MVC.App_Start.NinjectWebCommon), "Start")]
-//[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(ProjetoModeloDDD.MVC.App_Start.NinjectWebCommon), "Stop")]
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(ProjetoModeloDDD.MVC.App_Start.NinjectWebCommon), "Start")]
+[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(ProjetoModeloDDD.MVC.App_Start.NinjectWebCommon), "Stop")]
 
 namespace ProjetoModeloDDD.MVC.App_Start
 {
@@ -18,22 +17,21 @@ namespace ProjetoModeloDDD.MVC.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
-    using Ninject.Web.Common.WebHost;
 
-    public static class NinjectWebCommon
+    public static class NinjectWebCommon 
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
 
         /// <summary>
         /// Starts the application
         /// </summary>
-        public static void Start()
+        public static void Start() 
         {
             DynamicModuleUtility.RegisterModule(typeof(OnePerRequestHttpModule));
             DynamicModuleUtility.RegisterModule(typeof(NinjectHttpModule));
             bootstrapper.Initialize(CreateKernel);
         }
-
+        
         /// <summary>
         /// Stops the application.
         /// </summary>
@@ -41,7 +39,7 @@ namespace ProjetoModeloDDD.MVC.App_Start
         {
             bootstrapper.ShutDown();
         }
-
+        
         /// <summary>
         /// Creates the kernel that will manage your application.
         /// </summary>
@@ -81,6 +79,6 @@ namespace ProjetoModeloDDD.MVC.App_Start
             kernel.Bind(typeof(IRepositoryBase<>)).To(typeof(RepositoryBase<>));
             kernel.Bind<IClienteRepository>().To<ClienteRepository>();
             kernel.Bind<IProdutoRepository>().To<ProdutoRepository>();
-        }
+        }        
     }
 }
